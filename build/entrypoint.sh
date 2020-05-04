@@ -3,7 +3,7 @@
 set -e
 
 : ${GCLOUD_REGISTRY:=eu.gcr.io}
-: ${IMAGE:=$GITHUB_REPOSITORY}
+: ${IMAGE:=$(echo $GITHUB_REPOSITORY | awk '{print tolower($0)}')}
 : ${ARGS:=} # Default: empty build args
 : ${TAG:=$GITHUB_SHA}
 : ${DEFAULT_BRANCH_TAG:=true}
